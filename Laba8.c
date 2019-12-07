@@ -15,9 +15,8 @@ int main() {
     
     while(scanf("%d", &n)!=EOF){
         
-        printf("%d", fib(n));
+        printf("%d ", fib(n));
         
-        printf(" ");
     }
     return 0;
 }
