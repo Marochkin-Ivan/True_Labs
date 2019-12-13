@@ -12,7 +12,7 @@ int main() {
         
         Lsimbol = n;
         
-        if (n == ' ' || n == '\n'){
+        if (n == ' ' || n == '\n' || n==','){
             
             RightWords = RightWords + mark;
             
