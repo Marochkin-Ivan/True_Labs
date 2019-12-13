@@ -4,15 +4,17 @@ int main() {
     
     int  mark=1, Fsimbol=1, RightWords=0, Count=0;
     
-    char n;
+    char n, Lsimbol;
  
-    while((n=getchar())!=EOF){
+    while( (n=getchar()) != EOF){
         
-        Count=Count+1;
+        Count = Count + 1;
         
-        if (n==' '){
+        Lsimbol = n;
+        
+        if (n == ' ' || n == '\n'){
             
-            RightWords=RightWords+mark;
+            RightWords = RightWords + mark;
             
             Fsimbol=1;
             
@@ -21,42 +23,36 @@ int main() {
             continue;
         }
         
-        if (Fsimbol==1){
+        if(mark == 0) continue;
+        
+        if (Fsimbol == 1){
             
             if ((n >= 'A' && n<= 'Z') ||
                 (n >= 'a' && n<= 'z') ||
                 (n=='_')){
                 
-                Fsimbol=0;
+                Fsimbol=0; continue;
                 
             } else {
                 mark=0;
                 Fsimbol=0;
-                
-                
+                continue;
             }
+            
         }
         
-        
-        
-        if ((n >= 'A' && n<= 'Z') ||
+        if ( !((n >= 'A' && n<= 'Z') ||
             (n >= 'a' && n<= 'z') ||
             (n=='_') ||
-            (n >= '0' && n<= '9')){
-        
-        } else {mark=0;}
-        
-    } 
-    
-    
-    RightWords=RightWords+mark;
-    
-    if (Count==0){
-        
-        RightWords=0;
+            (n >= '0' && n<= '9')) )
+            mark=0;
         
     }
     
+    if (Lsimbol != ' ' && Lsimbol != '\n') RightWords = RightWords + mark;
+        
+    if (Count == 0) RightWords=0;
+        
     printf("Ansver: %d\n", RightWords);
     
 }
