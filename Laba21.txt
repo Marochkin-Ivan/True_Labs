@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# -p - полный путь к директории
+# -с - кол-во элементов для кодирования по Цезарю
+
+flag=0
+char=a
+
+while (( $# != 0 ))
+do
+	if [ $1 = "-p" ]
+	then 
+		shift
+		path="$1"
+		flag=1
+		shift
+	elif [ $1 = "-c" ]
+	then
+		shift
+		count="$1"
+		flag=1
+		shift
+	else 
+		echo "Проверьте справку (?)"
+		flag=0
+		break
+	fi
+done
+
+while [ $flag != 1 ]
+do
+	read a b c d
+	if [ $a = "-p" ] && [ $c = "-c" ]
+        then
+		path=b
+		count=d
+		flag=1
+	elif [ $a = "-c" ] && [ $c = "-p" ]
+	then
+		path=d
+		count=b
+		flag=1
+	elif [ $a = "?" ]
+	then 
+		echo "-p полный_путь_к_дириктории -с кол-во_символов_для_кодирования_по_Цезарю"
+	else
+		echo "Проверьте справку (?)"
+	fi
+done
+
+cd $path
+
+for (( i = 0; i < $count; i++ ))
+do
+	char="$(tr "[a-z]" "[b-za]" < <(echo "$char"))"
+done 
+
+while read a
+do
+	echo "$(cat $a | tr "[a-z]" "[$char-za]")" > $a
+
+done < <(find $(pwd) -name '*.txt') 
+
