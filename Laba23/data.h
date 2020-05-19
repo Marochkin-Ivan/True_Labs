@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
 typedef struct tree {
     int value;
     struct tree *left;
