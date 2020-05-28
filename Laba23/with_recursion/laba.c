@@ -114,11 +114,13 @@ bool delete_cell(treeptr *t, int value){
     treeptr to_delete = NULL;
     if (parent != NULL){
         if (parent->right != NULL){
-        if (value == parent->right->value)
-            to_delete = parent->right;
+            if (value == parent->right->value)
+                to_delete = parent->right;
         }
-        else
-            to_delete = parent->left;
+        if (parent->left != NULL){
+            if (value == parent->left->value)
+                to_delete = parent->left;
+        }
     }
     else // в дереве нет такого значения
         return false;
@@ -177,6 +179,7 @@ bool delete_cell(treeptr *t, int value){
             return true;
         }
     }
+    return true;
 }
 
 depthptr find_max_depth(treeptr t, int cur_depth, int prev, depthptr d){
@@ -266,6 +269,8 @@ int main (){
             }
             else
                 printf("%s\n", "Дерево пустое...");
+            d->max = 0;
+            d->cell = 0;
         }
         else if (arg == 'm'){
                 print_menu();

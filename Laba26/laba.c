@@ -1,95 +1,109 @@
 #include"data.h"
+#define new_size 1.5
+#define min_size 4
 
-listptr push_front(listptr *l, int value){
-    listptr current = *l;
-    listptr previous = NULL;
-    
-    while (current != NULL){
-        previous = current;
-        current = current->next;
+stackptr create()
+{
+    stackptr c = NULL;
+    c = malloc(sizeof(stack));
+    if (c == NULL)
+        exit(-1);
+    c->size = min_s;
+    c->data = malloc(c->size * (sizeof(int)));
+    if (c->data == NULL)
+    {
+        free(c);
+        exit(-1);
     }
-    current = malloc(sizeof(list));
-    if (current == NULL) //снова никогда не произойдет, кек
-        return NULL;
-    current->value = value;
-    current->next = NULL;
-    current->prev = previous;
-    if (previous == NULL)
-        *l = current;
-    else
-        previous->next = current;
-    return current;
+    c->top = 0;
+    return c;
 }
 
-listptr push_back(listptr *l, int value){
-    listptr current = *l;
-    listptr next = NULL;
-    
-    if (current != NULL){
-        next = current;
-        current = current->prev;
-    }
-    current = malloc(sizeof(list));
-    if (current == NULL)
-        return NULL;
-    current->value = value;
-    current->next = next;
-    current->prev = NULL;
-    if (next != NULL){
-        next->prev = current;
-        *l = current;
-    }
-    return current;
+void del_all(stackptr *s)
+{
+//    free((*s)->data);
+    free(*s);
+    *s = NULL;
 }
 
-bool pop_front(listptr *l){
-    listptr current = *l;
-    listptr previous = NULL;
-    
-    if (current == NULL)
-        return false;
-    
-    while (current->next != NULL){
-        previous = current;
-        current = current->next;
-    }
-    if (previous != NULL)
-        previous->next = NULL;
-    else
-        *l = NULL;
-    free(current);
-    return true;
+void resize(stackptr *s)
+{
+    stackptr c = *s;
+    c->size *= new_size;
+    c->data = realloc(c->data, c->size * (sizeof(int)));
+    if (c->data == NULL)
+        exit(-3);
 }
 
-bool pop_back(listptr *l){
-    listptr current = *l;
-    
-    if (current == NULL)
+int s_pop(stackptr *s)
+{
+    stackptr c = *s;
+    if (c->top == 0)
+        exit(-2);
+    c->top--;
+    return c->data[c->top];
+}
+
+void s_push(stackptr s, int value)
+{
+    if (s->top >= s->size)
+        resize(&s);
+    s->data[s->top] = value;
+    s->top++;
+}
+
+bool s_is_empty(stackptr s)
+{
+    if (s->top == 0)
+        return true;
     return false;
-    
-    if (current->next == NULL)
-        *l = NULL;
-    else{
-        (current->next)->prev = NULL;
-        *l = current->next;
-    }
-    free(current);
-    return true;
 }
 
-void print_list(listptr *l){
-    listptr current = *l;
-    
-    if (current == NULL)
-        printf("%s\n", "Sorry, list is empty");
-    else
-        while (current != NULL){
-            printf("%d", current->value);
-            if (current->next != NULL)
-                printf("%s", "->");
-            current = current->next;
+void s_insert(stackptr s, int pos, int value)
+{
+    if ((s->top + 1) >= s->size)
+        resize(&s);
+    bool flag = false;
+    int i = pos;
+    if (s_is_empty(s))
+    {
+        s->data[s->top] = value;
+        return;
+    }
+    s->data[i + 1] = value;
+    while (!flag && i >= 0)
+    {
+        if (s->data[i] > value)
+        {
+            s->data[i + 1] = s->data[i];
+            s->data[i] = value;
         }
+        else
+            flag = true;
+        i--;
+    }
+//    s->top++; добавить в main
 }
+
+void s_sort(stackptr s)
+{
+    if (s_is_empty(s))
+        return;
+    for (int i = 1; i < s->top; i++)
+        s_insert(s, i - 1, s->data[i]);
+}
+
+void print_stack(stackptr s)
+{
+    for (int i = 0; i < s->top; i++)
+    {
+        printf("%d", s->data[i]);
+        if (i != s->top - 1)
+            printf("%s", "->");
+    }
+    printf("\n");
+}
+
 
 void print_menu(){
     printf ("%s\n", "\nWelcome!");

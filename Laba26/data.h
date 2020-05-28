@@ -4,9 +4,9 @@
 #include<stdlib.h>
 
 typedef struct list {
-    int value;
-    struct list *next;
-    struct list *prev;
+    int *data;
+    int size;
+    int end;
 } list;
 
 typedef list* listptr;
