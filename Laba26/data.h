@@ -6,7 +6,7 @@
 typedef struct list {
     int *data;
     int size;
-    int end;
+    int top;
 } list;
 
 typedef list* listptr;
