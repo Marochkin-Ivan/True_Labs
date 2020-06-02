@@ -1,0 +1,15 @@
+#!/bin/bash
+CC = gcc
+LD = gcc
+CCFLAGS = -g -Wall -pedantic -std=c99
+LDFLAGS = 
+OBJ = laba.c
+.SUFFIXES: .c 
+laba: $(OBJ)
+	$(LD) $(LDFLAGS) -o laba $(OBJ)
+laba.o: laba.c 
+.c.o :
+	$(CC) $(CCFLAGS) -c $< -o $@
+laba.c: data.h
+clean:
+	rm -f *.o prog
