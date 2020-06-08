@@ -1,0 +1,86 @@
+\documentclass[11pt,a5paper,two side]{book}
+\usepackage[english, russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+
+\geometry{left=2cm}
+\geometry{right=2.4cm}
+\geometry{top=2cm}
+\geometry{bottom=0.5cm}
+\pagestyle{empty} 
+    \fancyhf{}
+    \fancyhead[LE,RO]{\small\textit{\thepage}}
+    \fancyhead[CO]{\fontsize{9}{11}\textit{\textquotedblright $\frac{0}{0}$\textquotedblleft \hspace{0.2cm}и аналогичные выражения}}
+    
+    
+\begin{document}
+
+\begin{center}
+{\textit{Г\,л\,а\,в\,а\, \,1\,1}} \\[0.3cm]
+\textbf{{\normalsize \textquotedblright $\dfrac{0}{0}$\textquotedblleft \hspace{0.2cm}И АНАЛОГИЧНЫЕ ВЫРАЖЕНИЯ}} \\[0.3cm]
+\textbf{{\small ВВЕДЕНИЕ}}
+\end{center}
+
+$\dfrac{0}{0}$ до сих пор не имело никакого смысла, и впредь мы не собираемся приписывать ему какой-нибудь смысл. На самом деле мы будем иметь в виду следующее.
+
+Как мы знаем, 
+
+$$\lim_{x=0} \dfrac{x}{x}=1,$$
+$$\lim_{x=0} \dfrac{x^2}{x}=0,$$
+\begin{center}
+\hspace{1.8cm} $\lim\limits_{x=0} \dfrac{x}{x^2}$ не существует,
+\end{center}
+$$\lim_{x=0} \dfrac{\dfrac{x^2}{x}}{\dfrac{x^2}{x}}=1.$$
+Четыре выражения, стоящие под знаком предела имеют вид
+$$\varphi(x)=\frac{f(x)}{g(x)},$$ 
+где
+$$\lim_{x=0} f(x)=0, \hspace{0.3cm} \lim_{x=0} g(x)=0.$$
+
+Если
+$$\varphi(x) = \dfrac{f(x)}{g(x)},$$
+где
+$$\lim_{x=\xi} f(x)= \eta, \hspace{0.3cm} \lim_{x=\xi} g(x)= \zeta,$$
+то в том случае, когда
+$$\zeta\neq0,$$
+
+\newpage
+\pagestyle{fancy}
+\setcounter{page}{153}
+
+мы, по теореме 92, имеем
+$$\lim_{x=\xi} \varphi(x) = \dfrac{\eta}{\zeta}$$
+
+Таким образом интерес представляет лишь случай $\zeta = 0$ (как в приведенных выше четырех примерах).
+
+Если
+$$\zeta=0, \hspace{0.3cm} \eta\neq0,$$
+то $\lim\limits_{x=\xi} f(x)$, очевидно, не существует; действительно, в противном случае мы имели бы
+\begin{gather*}
+	\eta= \lim\limits_{x=\xi} f(x) = \lim\limits_{x=\xi} (g(x) \varphi(x)) = \lim\limits_{x=\xi} g(x) \lim\limits_{x=\xi} \varphi(x) = \\
+	= 0 \cdot \lim\limits_{x=\xi} \varphi(x) = 0.
+\end{gather*}
+
+К случаю
+$$\eta=0, \hspace{0.3cm} \zeta=0$$
+и относится первые рассмотрения этой главы.\\[0.5cm]
+
+\textbf{Теорема 187.} \textit{Пусть 
+$$\lim_{x=\xi} f(x)=0,$$
+$$\lim_{x=\xi} g(x)=0,$$
+\begin{center}
+$f'(\xi)$ существует,
+\end{center}
+$$g'(\xi) \neq 0.$$
+Тогда
+$$\lim_{x=\xi} \dfrac{f(x)}{g(x)} = \dfrac{f'(\xi)}{g'(\xi)}.$$
+}
+
+{Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о.} $f(x)$\hspace{0.3cm}и\hspace{0.3cm}$g(x)$ дифференцируемы в $\xi$, а, следовательно, и непрерывны. Поэтому
+\textit{$$f(\xi) = g(\xi) = 0,$$
+$$f'(\xi) = \lim_{x=\xi} \dfrac{f(x)}{x - \xi},$$
+$$g'(\xi) = \lim_{x=\xi} \dfrac{g(x)}{x - \xi},$$}
+
+\end{document}
