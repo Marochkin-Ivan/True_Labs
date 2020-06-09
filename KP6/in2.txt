@@ -1,0 +1,16 @@
+Morozov NV M 9 A - - polk2
+Petrov AO M 11 A BMSTU Citimobil -
+Zaytsev KD M 11 V BMSTU - polk2
+Smirnov EA M 11 A MISIS SoftSwiss -
+Gorshkov DE M 11 V MIPT Citimobil -
+Emelyanov AD M 9 A - - polk1
+Ivanova DA F 11 B MAI Uber -
+Pavlova EA F 9 B - SoftSwiss -
+Semenov AM M 11 V MIPT Google -
+Vinogradov DS M 11 A HSE Avito -
+Zelenov AE M 11 B MAI Yandex polk1
+Radriguez MD M 9 B - - polk2
+Bogdanova OV F 11 A MSU Citimobil -
+Solovyev FD M 11 A HSE Yandex -
+Kuznetsov OA M 11 A MAI - polk1
+Lebedeva DS F 11 B HSE Skyeng -
