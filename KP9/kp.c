@@ -4,6 +4,7 @@
 #include <time.h>
 
 char data[14][87]; // массив с ключами и строками
+
 short isSorted = 0; // статус отсортированности
 
 void binarySort(int c) { // сортировка двоичной вставкой
